@@ -17,7 +17,7 @@ function InspectorDashboard() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/factory?inspectorId=${user.id}`)
+    fetch(`https://firecrack-factory-monitoring2.onrender.com/api/factory?inspectorId=${user.id}`)
       .then(res => res.json())
       .then(setFactories);
   }, [user.id]);
@@ -34,7 +34,7 @@ function InspectorDashboard() {
     if (!selectedFactory) return alert('Select a factory first');
     
     try {
-      const res = await fetch('http://localhost:5000/api/inspection', {
+      const res = await fetch('https://firecrack-factory-monitoring2.onrender.com/api/inspection', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -54,7 +54,7 @@ function InspectorDashboard() {
       if (res.ok) {
         alert('Inspection Report Submitted Successfully');
         // Refresh 
-        fetch(`http://localhost:5000/api/factory?inspectorId=${user.id}`).then(r => r.json()).then(setFactories);
+        fetch(`https://firecrack-factory-monitoring2.onrender.com/api/factory?inspectorId=${user.id}`).then(r => r.json()).then(setFactories);
         setSelectedFactory(null);
       }
     } catch (err) {
