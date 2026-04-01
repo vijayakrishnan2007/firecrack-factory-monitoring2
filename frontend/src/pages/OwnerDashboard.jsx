@@ -15,7 +15,7 @@ function OwnerDashboard() {
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/factory')
+    fetch('https://firecrack-factory-monitoring2.onrender.com/api/factory')
       .then(res => res.json())
       .then(data => {
         const ownerFactories = data.filter(f => f.owner && f.owner._id === user.id);
@@ -36,7 +36,7 @@ function OwnerDashboard() {
           setHistory(initialHist);
           
           // Fetch alerts for initially selected
-          fetch(`http://localhost:5000/api/factory/${ownerFactories[0]._id}/alerts`)
+          fetch(`https://firecrack-factory-monitoring2.onrender.com/api/factory/${ownerFactories[0]._id}/alerts`)
             .then(res => res.json())
             .then(setAlerts);
         }
@@ -87,7 +87,7 @@ function OwnerDashboard() {
 
   const handleFactoryChange = (e) => {
     setSelectedFactoryId(e.target.value);
-    fetch(`https://firecrack-factory-monitoring2.onrender.com`)
+    fetch(`https://firecrack-factory-monitoring2.onrender.com/api/factory/${e.target.value}/alerts`)
       .then(res => res.json())
       .then(setAlerts);
   };
