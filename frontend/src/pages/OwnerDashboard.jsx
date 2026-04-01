@@ -87,7 +87,7 @@ function OwnerDashboard() {
 
   const handleFactoryChange = (e) => {
     setSelectedFactoryId(e.target.value);
-    fetch(`http://localhost:5000/api/factory/${e.target.value}/alerts`)
+    fetch(`https://firecrack-factory-monitoring2.onrender.com`)
       .then(res => res.json())
       .then(setAlerts);
   };
