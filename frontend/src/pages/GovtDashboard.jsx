@@ -11,8 +11,8 @@ function GovtDashboard() {
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/factory').then(r => r.json()).then(setFactories);
-    fetch('http://localhost:5000/api/inspection').then(r => r.json()).then(setReports);
+    fetch('https://firecrack-factory-monitoring2.onrender.com').then(r => r.json()).then(setFactories);
+    fetch('https://firecrack-factory-monitoring2.onrender.com').then(r => r.json()).then(setReports);
     
     // Initial fetch of recent alerts across all factories
     // Simulated via first factory for demo simplicity, or using live sockets
@@ -45,8 +45,8 @@ function GovtDashboard() {
 
   const approveReport = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/inspection/${id}/approve`, { method: 'PUT' });
-      if (res.ok) fetch('http://localhost:5000/api/inspection').then(r => r.json()).then(setReports);
+      const res = await fetch(`https://firecrack-factory-monitoring2.onrender.com`, { method: 'PUT' });
+      if (res.ok) fetch('https://firecrack-factory-monitoring2.onrender.com').then(r => r.json()).then(setReports);
     } catch (err) {
       console.error(err);
     }
