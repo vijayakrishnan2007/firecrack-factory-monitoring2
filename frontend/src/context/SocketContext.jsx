@@ -7,7 +7,7 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:5000', {
+    const newSocket = io('https://firecrack-factory-monitoring2.onrender.com', {
       transports: ['websocket', 'polling']
     });
     setSocket(newSocket);
